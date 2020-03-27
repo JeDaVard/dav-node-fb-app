@@ -6,6 +6,8 @@ import Payments from './Payments'
 class Header extends React.Component {
     renderLogin() {
         switch (this.props.auth) {
+            case '':
+                return <a href="/auth/google">Login with Google</a>;
             case false:
                 return <a href="/auth/google">Login with Google</a>;
             case null:
@@ -13,6 +15,14 @@ class Header extends React.Component {
             default:
                return (
                    <>
+                       <li style={{marginRight: '10px'}}>
+                           Credits:&nbsp;
+                           <button
+                               className={'btn-floating light-green pulse z-depth-0'}
+                           >
+                               {this.props.auth.credits}
+                           </button>
+                       </li>
                        <li><Payments /></li>
                        <li><a href="/api/logout">Logout</a></li>
                    </>
@@ -39,8 +49,9 @@ class Header extends React.Component {
     }
 }
 
-const mapStateToProps = ({ auth }) => ({
+const mapStateToProps = ({ auth, credits }) => ({
     auth,
+    credits,
 });
 
 export default connect(mapStateToProps)(Header);

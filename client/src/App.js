@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-import * as actions from './actions/actions'
+import * as actions from './actions'
 import './App.css'
 
 import Header from "./components/Header";
@@ -30,10 +30,5 @@ class App extends React.Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchUser: () => dispatch(actions.fetchUser())
-    }
-};
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(null, actions)(App);
