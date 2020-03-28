@@ -18,7 +18,8 @@ class Header extends React.Component {
                        <li style={{marginRight: '10px'}}>
                            Credits:&nbsp;
                            <button
-                               className={'btn-floating light-green pulse z-depth-0'}
+                               className={'btn-floating light-green darken-2 pulse z-depth-0'}
+                               style={{cursor: 'default'}}
                            >
                                {this.props.auth.credits}
                            </button>

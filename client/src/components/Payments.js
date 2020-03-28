@@ -14,10 +14,10 @@ class Payments extends React.Component{
                 stripeKey={process.env.REACT_APP_STRIPE_KEY}
             >
                 <button
-                    className={'btn-floating light-green z-depth-0'}
+                    className={'btn light-green z-depth-0'}
                     style={{marginRight: '10px'}}
                 >
-                    ADD
+                    Add credits
                 </button>
             </StripeCheckout>
         )

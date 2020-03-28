@@ -10,5 +10,14 @@ html {
 
 body {
     background: #ededed;
-    color: #1e2226;
+    color: #47505a;
+}
+
+.mainDash {
+}
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0, .1);
 }
