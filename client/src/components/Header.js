@@ -32,7 +32,6 @@ class Header extends React.Component {
         }
     }
     render() {
-        console.log(this.props.auth);
         return (
             <nav className={'blue-grey darken-4 z-depth-0'}>
                 <div className="nav-wraper">

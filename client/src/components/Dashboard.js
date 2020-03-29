@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 export default () => {
@@ -6,7 +7,7 @@ export default () => {
         <main className='mainDash'>
             <div className="dashboard">
                 <h4>Dashboard</h4>
-                <button className='btn blue-grey z-depth-0'>New Survey</button>
+                <Link to={'/surveys/new'}><button className='btn blue-grey z-depth-0'>New Survey</button></Link>
             </div>
             <div className="surveys">
                 <h6>Surveys</h6>
