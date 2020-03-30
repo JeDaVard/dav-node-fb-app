@@ -32,17 +32,18 @@ const SurveyForm = (props) => {
 function validate(values) {
     const errors = {};
 
-    errors.recipient = validateEmails(values.recipient || '');
+    errors.recipients = validateEmails(values.recipients || '');
 
     if (!values.title) errors.title = 'You must provide a title';
     if (!values.subject) errors.subject = 'You must provide the subject';
     if (!values.body) errors.body = 'You can\'t send an empty message';
-    if (!values.recipient) errors.recipient = 'You must provide minimum one recipient';
+    if (!values.recipients) errors.recipients = 'You must provide minimum one recipient';
 
     return errors;
 }
 
 export default reduxForm({
     validate,
-    form: 'surveyForm'
+    form: 'surveyForm',
+    destroyOnUnmount: false
 })(SurveyForm)

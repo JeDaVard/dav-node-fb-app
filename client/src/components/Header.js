@@ -37,6 +37,7 @@ class Header extends React.Component {
                 <div className="nav-wraper">
                     <Link to={this.props.auth ? '/surveys' : '/'}
                           className="left brand-logo"
+                          style={{letterSpacing: '2px'}}
                     >
                         &nbsp; DAVfb
                     </Link>

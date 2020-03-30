@@ -33,3 +33,104 @@ body {
     top: 10px;
     right: 0;
 }
+
+.survey-review {
+    box-sizing: unset !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+.survey-review .survey-review__field {
+    padding: 5px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.21);
+}
+.survey-review .survey-review__field:not(:last-of-type) {
+    margin-bottom: 1rem;
+}
+
+.survey-review .survey-review__text {
+    color: #005353;
+}
+.survey-review .survey-review__text--title {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.survey-review .survey-review__text--subject {
+    color: rgba(81, 93, 94, .9);
+    font-weight: 300;
+}
+
+.survey-review .survey-review__text--text {
+    color: rgba(14, 68, 69, 0.9);
+    font-weight: 400;
+}
+
+.survey-review .survey-review__text--rec {
+    color: rgba(81, 93, 94, .6);
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-ellipsis div {
+    position: absolute;
+    top: 13px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+    left: 12px;
+    animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+    left: 12px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+    left: 36px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+    left: 60px;
+    animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes lds-ellipsis3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes lds-ellipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(24px, 0);
+    }
+}

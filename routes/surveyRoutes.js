@@ -28,7 +28,7 @@ module.exports = (app) => {
             req.user.credits -= 10;
             const user = await req.user.save();
 
-            res.status(200).redirect('/surveys').send(user);
+            res.send(user);
         } catch (e) {
             res.status(422).send(e)
         }
