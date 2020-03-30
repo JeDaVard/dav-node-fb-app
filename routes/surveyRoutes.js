@@ -22,13 +22,15 @@ module.exports = (app) => {
         const mailer = new Mailer(survey, template(survey));
 
         try {
-            await mailer.send();
-            await survey.save();
+            if (req.user.credits > 10) {
+                await mailer.send();
+                await survey.save();
 
-            req.user.credits -= 10;
-            const user = await req.user.save();
+                req.user.credits -= 10;
+                const user = await req.user.save();
 
-            res.send(user);
+                res.send(user);
+            }
         } catch (e) {
             res.status(422).send(e)
         }
