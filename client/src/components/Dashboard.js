@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchSurveys } from "../actions";
+import {fetchSurveys, removeSurvey } from "../actions";
 
-const Dashboard = ({ surveys, fetchSurveys }) => {
+const Dashboard = ({ surveys, fetchSurveys, removeSurvey }) => {
     useEffect(() => {
         fetchSurveys()
     }, []);
@@ -19,9 +19,9 @@ const Dashboard = ({ surveys, fetchSurveys }) => {
                                 <div className="survey__top">
                                     <div className="survey__title">
                                         <h2>{title}</h2>
-                                        <p>{dateSent}</p>
+                                        <p>{new Date(dateSent).toLocaleDateString() +' | '+ new Date(dateSent).toLocaleTimeString()}</p>
                                     </div>
-                                    <a href="/remove" className="survey__remove">REMOVE</a>
+                                    <button onClick={() => removeSurvey(_id)} className="survey__remove">REMOVE</button>
                                 </div>
                                 <div className="survey__body">
                                     <div className="survey__body-left">
@@ -51,4 +51,4 @@ const mapStateToProps = ({ surveys }) => {
     }
 };
 
-export default connect(mapStateToProps, { fetchSurveys })(Dashboard)
+export default connect(mapStateToProps, { fetchSurveys, removeSurvey })(Dashboard)

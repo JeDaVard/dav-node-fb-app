@@ -8,6 +8,15 @@ const { Path } = require('path-parser');
 const { URL } = require('url');
 
 module.exports = (app) => {
+    app.delete('/api/surveys', requireLogin, async (req, res) => {
+        const _id = (req.query.id);
+
+        await Survey.findOneAndDelete({_id, _user: req.user._id });
+        const surveys = await Survey.find({ _user: req.user._id })
+            .select({ recipients: false });
+
+        res.send(surveys)
+    });
     app.get('/api/surveys/:surveyId/:choice/thanks', (req, res) => {
         res.send(require('../services/emailTemplates/thanks'));
     });

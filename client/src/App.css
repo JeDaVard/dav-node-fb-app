@@ -250,12 +250,16 @@ body {
     margin: 0
 }
 
-.survey__remove {
+.survey__remove,
+.survey__remove:active
+{
     font-size: 12px;
     font-weight: 900;
     letter-spacing: 1px;
     margin: 1rem;
     color: #9d7a69;
+    border: 0;
+    cursor: pointer;
 }
 
 .survey__body {
