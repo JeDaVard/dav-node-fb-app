@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const recipientSchema = new Schema({
+const RecipientSchema = new Schema({
     email: String,
-    responded: {type: Boolean, default: false}
+    responded: { type: Boolean, default: false },
+    answer: { type: String, default: '' }
 });
 
-module.export = recipientSchema;
+module.exports = RecipientSchema;

@@ -210,3 +210,9 @@ body {
     }
 }
 
+.btn {
+    transition: all .2s;
+}
+.btn:hover {
+    filter: brightness(115%);
+}
