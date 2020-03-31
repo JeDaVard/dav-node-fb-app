@@ -8,9 +8,9 @@ const { Path } = require('path-parser');
 const { URL } = require('url');
 
 module.exports = (app) => {
-    // app.get('/api/surveys/thanks', (req, res) => {
-    //     res.send('Thank you for voting!')
-    // });
+    app.get('/api/surveys/:surveyId/:choice/thanks', (req, res) => {
+        res.send(require('../services/emailTemplates/thanks'));
+    });
     app.post('/api/surveys/webhooks', (req, res) => {
         const p = new Path('/api/surveys/:surveyId/:choice');
 
@@ -43,9 +43,12 @@ module.exports = (app) => {
 
         res.send({});
     });
-    // app.get('api/surveys', requireLogin, async (req, res) => {
-    //     //
-    // });
+    app.get('/api/surveys', requireLogin, async (req, res) => {
+        const surveys = await Survey.find({ _user: req.user._id })
+            .select({ recipients: false });
+
+        res.send(surveys)
+    });
     app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
         const { title, subject, body, recipients } = req.body;
         const survey = new Survey({
@@ -59,21 +62,17 @@ module.exports = (app) => {
         const mailer = new Mailer(survey, template(survey));
 
         try {
-            if (req.user.credits >= 10) {
-                await mailer.send();
-                await survey.save();
+            await mailer.send();
+            await survey.save();
 
-                req.user.credits -= 10;
-                const user = await req.user.save();
+            req.user.surveys.push(survey._id);
+            req.user.credits -= 10;
+            const user = await req.user.save();
 
-                res.send(user);
-            }
+            res.send(user);
         } catch (e) {
             res.status(422).send(e)
         }
 
     });
-    // app.post('api/surveys/webhooks', requireLogin, async (req, res) => {
-    //     //
-    // });
 };
